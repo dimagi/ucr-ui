@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "options": {
+    "keep_oneof_values": false
+  },
+  "properties": {
+    "type": {
+      "type": "string",
+      "options": {
+        "hidden": true
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://www.commcarehq.org/ucr/expressions/constant.schema.json",
+      "title": "Constant",
+      "description": "A constant value",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "constant"
+          ]
+        },
+        "constant": {
+          "description": "The value of the constant"
+        }
+      },
+      "required": [
+        "type",
+        "constant"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
+      "title": "Property Name",
+      "description": "Access a property by name",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "property_name"
+          ]
+        },
+        "property_name": {
+          "description": "The name of the property to access.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "property_name"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
+      "title": "Property Path",
+      "description": "Access a property by path",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "property_path"
+          ]
+        },
+        "property_path": {
+          "description": "The path of the property to access.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "property_path"
+      ]
+    }
+  ]
+}

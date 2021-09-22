@@ -8,7 +8,7 @@ SCHEMA_DIR = BASE_DIR / 'schemas'
 EXPRESSION_DIR = SCHEMA_DIR / 'expressions'
 
 
-def generate_schema():
+def generate_schemas():
     print('generating schema')
     print(BASE_DIR, SCHEMA_DIR, EXPRESSION_DIR)
     expression_schemas = []
@@ -18,7 +18,7 @@ def generate_schema():
             expression_schema = json.loads(f.read())
             expression_schemas.append(expression_schema)
 
-    expression_schema = {
+    multi_expression_schema = {
         "type": "array",
         "title": "Expressions",
         "items": {
@@ -26,8 +26,27 @@ def generate_schema():
         }
     }
     with open(SCHEMA_DIR / 'expression-oneof.json', 'w') as f:
-        f.write(f'{json.dumps(expression_schema, indent=2)}\n')
+        f.write(f'{json.dumps(multi_expression_schema, indent=2)}\n')
+
+    # see https://github.com/jdorn/json-editor/issues/619 for inspiration
+    single_expression_schema = {
+      "type": "object",
+      "options": {
+        "keep_oneof_values": False
+      },
+      "properties": {
+        "type": {
+          "type": "string",
+          "options": {
+            "hidden": True
+          }
+        }
+      },
+      "oneOf": expression_schemas,
+    }
+    with open(SCHEMA_DIR / 'single-expression.json', 'w') as f:
+        f.write(f'{json.dumps(single_expression_schema, indent=2)}\n')
 
 
 if __name__ == "__main__":
-    generate_schema()
+    generate_schemas()
