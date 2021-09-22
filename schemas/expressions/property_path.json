@@ -5,6 +5,11 @@
   "description": "Access a property by path",
   "type": "object",
   "properties": {
+    "type": {
+      "enum": [
+        "property_path"
+      ]
+    },
     "property_path": {
       "description": "The path of the property to access.",
       "type": "array",
@@ -13,5 +18,5 @@
       }
     }
   },
-  "required": ["property_path"]
+  "required": ["type", "property_path"]
 }

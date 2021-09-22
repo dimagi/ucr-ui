@@ -5,10 +5,15 @@
   "description": "Access a property by name",
   "type": "object",
   "properties": {
+    "type": {
+      "enum": [
+        "property_name"
+      ]
+    },
     "property_name": {
       "description": "The name of the property to access.",
       "type": "string"
     }
   },
-  "required": ["property_name"]
+  "required": ["type", "property_name"]
 }

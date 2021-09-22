@@ -5,9 +5,14 @@
   "description": "A constant value",
   "type": "object",
   "properties": {
+    "type": {
+      "enum": [
+        "constant"
+      ]
+    },
     "constant": {
       "description": "The value of the constant"
     }
   },
-  "required": ["constant"]
+  "required": ["type", "constant"]
 }
