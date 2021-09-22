@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
+  "title": "Property Name",
+  "description": "Access a property by name",
+  "type": "object",
+  "properties": {
+    "property_name": {
+      "description": "The name of the property to access.",
+      "type": "string"
+    }
+  },
+  "required": ["property_name"]
+}
