@@ -21,27 +21,6 @@
       "oneOf": [
         {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
-          "$id": "https://www.commcarehq.org/ucr/expressions/array_index.schema.json",
-          "title": "Array Index",
-          "description": "Extract a single item from an array",
-          "type": "object",
-          "properties": {
-            "type": {
-              "enum": [
-                "array_index"
-              ]
-            },
-            "array_expression": {
-              "$ref": "#"
-            }
-          },
-          "required": [
-            "type",
-            "array_expression"
-          ]
-        },
-        {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "$id": "https://www.commcarehq.org/ucr/expressions/constant.schema.json",
           "title": "Constant",
           "description": "A constant value",
@@ -59,6 +38,27 @@
           "required": [
             "type",
             "constant"
+          ]
+        },
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/expressions/array_index.schema.json",
+          "title": "Array Index",
+          "description": "Extract a single item from an array",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "array_index"
+              ]
+            },
+            "array_expression": {
+              "$ref": "#/definitions/expression"
+            }
+          },
+          "required": [
+            "type",
+            "array_expression"
           ]
         },
         {
