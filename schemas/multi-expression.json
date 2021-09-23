@@ -2,87 +2,113 @@
   "type": "array",
   "title": "Expressions",
   "items": {
-    "type": "object",
-    "options": {
-      "keep_oneof_values": false
-    },
-    "properties": {
-      "type": {
-        "type": "string",
-        "options": {
-          "hidden": true
+    "$ref": "#/definitions/expression"
+  },
+  "definitions": {
+    "expression": {
+      "type": "object",
+      "options": {
+        "keep_oneof_values": false
+      },
+      "properties": {
+        "type": {
+          "type": "string",
+          "options": {
+            "hidden": true
+          }
         }
-      }
-    },
-    "oneOf": [
-      {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "https://www.commcarehq.org/ucr/expressions/constant.schema.json",
-        "title": "Constant",
-        "description": "A constant value",
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "constant"
-            ]
-          },
-          "constant": {
-            "description": "The value of the constant"
-          }
-        },
-        "required": [
-          "type",
-          "constant"
-        ]
       },
-      {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
-        "title": "Property Name",
-        "description": "Access a property by name",
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "property_name"
-            ]
+      "oneOf": [
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/expressions/array_index.schema.json",
+          "title": "Array Index",
+          "description": "Extract a single item from an array",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "array_index"
+              ]
+            },
+            "array_expression": {
+              "$ref": "#"
+            }
           },
-          "property_name": {
-            "description": "The name of the property to access.",
-            "type": "string"
-          }
+          "required": [
+            "type",
+            "array_expression"
+          ]
         },
-        "required": [
-          "type",
-          "property_name"
-        ]
-      },
-      {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
-        "title": "Property Path",
-        "description": "Access a property by path",
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "property_path"
-            ]
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/expressions/constant.schema.json",
+          "title": "Constant",
+          "description": "A constant value",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "constant"
+              ]
+            },
+            "constant": {
+              "description": "The value of the constant"
+            }
           },
-          "property_path": {
-            "description": "The path of the property to access.",
-            "type": "array",
-            "items": {
+          "required": [
+            "type",
+            "constant"
+          ]
+        },
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
+          "title": "Property Name",
+          "description": "Access a property by name",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "property_name"
+              ]
+            },
+            "property_name": {
+              "description": "The name of the property to access.",
               "type": "string"
             }
-          }
+          },
+          "required": [
+            "type",
+            "property_name"
+          ]
         },
-        "required": [
-          "type",
-          "property_path"
-        ]
-      }
-    ]
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
+          "title": "Property Path",
+          "description": "Access a property by path",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "property_path"
+              ]
+            },
+            "property_path": {
+              "description": "The path of the property to access.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "property_path"
+          ]
+        }
+      ]
+    }
   }
 }
