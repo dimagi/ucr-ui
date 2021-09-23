@@ -40,8 +40,14 @@ def generate_schemas():
     multi_expression_schema = {
         "type": "array",
         "title": "Expressions",
-        "items": single_expression_schema,
+        "items": {
+            "$ref": "#/definitions/expression"
+        },
+        "definitions": {
+            "expression": single_expression_schema
+        }
     }
+
     with open(SCHEMA_DIR / 'multi-expression.json', 'w') as f:
         f.write(f'{json.dumps(multi_expression_schema, indent=2)}\n')
 
