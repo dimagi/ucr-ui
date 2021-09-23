@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 
+import enums
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = BASE_DIR / 'schemas'
@@ -44,13 +45,36 @@ def generate_schemas():
             "$ref": "#/definitions/expression"
         },
         "definitions": {
-            "expression": single_expression_schema
+            "expression": single_expression_schema,
         }
     }
 
     with open(SCHEMA_DIR / 'multi-expression.json', 'w') as f:
-        f.write(f'{json.dumps(multi_expression_schema, indent=2)}\n')
+        f.write(_schema_to_json(multi_expression_schema))
 
+
+    # indicator
+    with open(SCHEMA_DIR / 'indicators' / 'expression.json') as f:
+        indicator_schema = json.loads(f.read())
+
+    multi_indicator_schema = {
+        "type": "array",
+        "title": "Indicators",
+        "items": {
+            "$ref": "#/definitions/indicator"
+        },
+        "definitions": {
+            "indicator": indicator_schema,
+            "expression": single_expression_schema,
+            "datatype": enums.DATATYPE
+        }
+    }
+    with open(SCHEMA_DIR / 'multi-indicator.json', 'w') as f:
+        f.write(_schema_to_json(multi_indicator_schema))
+
+
+def _schema_to_json(schema):
+    return f'{json.dumps(schema, indent=2)}\n'
 
 if __name__ == "__main__":
     generate_schemas()
