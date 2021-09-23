@@ -18,10 +18,14 @@
           ]
         },
         "column_id": {
-          "type": "string"
+          "type": "string",
+          "title": "Column ID",
+          "description": "The database column to save to."
         },
         "display_name": {
-          "type": "string"
+          "type": "string",
+          "title": "Display Name",
+          "description": "The display name to use for this indicator."
         },
         "datatype": {
           "$ref": "#/definitions/datatype"
