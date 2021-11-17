@@ -6,6 +6,7 @@ import enums
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = BASE_DIR / 'schemas'
+OUTPUT_DIR = SCHEMA_DIR / 'outputs'
 EXPRESSION_DIR = SCHEMA_DIR / 'expressions'
 
 
@@ -35,7 +36,7 @@ def generate_schemas():
       },
       "oneOf": expression_schemas,
     }
-    with open(SCHEMA_DIR / 'single-expression.json', 'w') as f:
+    with open(OUTPUT_DIR / 'single-expression.json', 'w') as f:
         f.write(f'{json.dumps(single_expression_schema, indent=2)}\n')
 
     multi_expression_schema = {
@@ -49,7 +50,7 @@ def generate_schemas():
         }
     }
 
-    with open(SCHEMA_DIR / 'multi-expression.json', 'w') as f:
+    with open(OUTPUT_DIR / 'multi-expression.json', 'w') as f:
         f.write(_schema_to_json(multi_expression_schema))
 
 
@@ -69,7 +70,7 @@ def generate_schemas():
             "datatype": enums.DATATYPE
         }
     }
-    with open(SCHEMA_DIR / 'multi-indicator.json', 'w') as f:
+    with open(OUTPUT_DIR / 'multi-indicator.json', 'w') as f:
         f.write(_schema_to_json(multi_indicator_schema))
 
 
