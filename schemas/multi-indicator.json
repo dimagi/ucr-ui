@@ -13,6 +13,7 @@
       "type": "object",
       "properties": {
         "type": {
+          "type": "string",
           "enum": [
             "expression"
           ]
@@ -37,6 +38,7 @@
       "required": [
         "type",
         "datatype",
+        "column_id",
         "expression"
       ]
     },
@@ -102,6 +104,32 @@
         },
         {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/expressions/dict.schema.json",
+          "title": "Dictionary",
+          "description": "Create a dictionary of key/value pairs",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "dict"
+              ]
+            },
+            "properties": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "$ref": "#/definitions/expression"
+                }
+              }
+            }
+          },
+          "required": [
+            "type",
+            "properties"
+          ]
+        },
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "$id": "https://www.commcarehq.org/ucr/expressions/property_name.schema.json",
           "title": "Property Name",
           "description": "Access a property by name",
@@ -150,6 +178,7 @@
       ]
     },
     "datatype": {
+      "type": "string",
       "enum": [
         "date",
         "datetime",

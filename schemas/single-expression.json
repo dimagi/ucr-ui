@@ -47,11 +47,41 @@
         },
         "array_expression": {
           "$ref": "#/definitions/expression"
+        },
+        "index_expression": {
+          "$ref": "#/definitions/expression"
         }
       },
       "required": [
         "type",
-        "array_expression"
+        "array_expression",
+        "index_expression"
+      ]
+    },
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://www.commcarehq.org/ucr/expressions/dict.schema.json",
+      "title": "Dictionary",
+      "description": "Create a dictionary of key/value pairs",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "dict"
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "$ref": "#/definitions/expression"
+            }
+          }
+        }
+      },
+      "required": [
+        "type",
+        "properties"
       ]
     },
     {
