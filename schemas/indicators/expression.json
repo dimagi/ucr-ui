@@ -6,6 +6,7 @@
   "type": "object",
   "properties": {
     "type": {
+      "type": "string",
       "enum": [
         "expression"
       ]
@@ -27,5 +28,5 @@
       "$ref": "#/definitions/expression"
     }
   },
-  "required": ["type", "datatype", "expression"]
+  "required": ["type", "datatype", "column_id", "expression"]
 }

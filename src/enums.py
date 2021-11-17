@@ -1,5 +1,6 @@
 
 DATATYPE = {
+    "type": "string",
     "enum": [
         "date",
         "datetime",
