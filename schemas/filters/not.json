@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
+  "title": "Not",
+  "description": "A NOT filter",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": [
+        "not"
+      ]
+    },
+    "filter": {
+      "$ref": "#/definitions/filter"
+    }
+  },
+  "required": ["type", "filters"]
+}

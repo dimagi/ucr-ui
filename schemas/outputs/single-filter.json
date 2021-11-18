@@ -43,6 +43,77 @@
             "operator",
             "property_value"
           ]
+        },
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
+          "title": "And",
+          "description": "An AND filter",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "and"
+              ]
+            },
+            "filters": {
+              "type": "array",
+              "title": "Filters",
+              "items": {
+                "$ref": "#/definitions/filter"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "filters"
+          ]
+        },
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
+          "title": "Not",
+          "description": "A NOT filter",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "not"
+              ]
+            },
+            "filter": {
+              "$ref": "#/definitions/filter"
+            }
+          },
+          "required": [
+            "type",
+            "filters"
+          ]
+        },
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
+          "title": "Or",
+          "description": "An OR filter",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "or"
+              ]
+            },
+            "filters": {
+              "type": "array",
+              "title": "Filters",
+              "items": {
+                "$ref": "#/definitions/filter"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "filters"
+          ]
         }
       ]
     },

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
+  "title": "And",
+  "description": "An AND filter",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": [
+        "and"
+      ]
+    },
+    "filters": {
+      "type": "array",
+      "title": "Filters",
+      "items": {
+        "$ref": "#/definitions/filter"
+      }
+    }
+  },
+  "required": ["type", "filters"]
+}
