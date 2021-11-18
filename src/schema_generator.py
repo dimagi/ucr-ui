@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+from typing import List
 
 import enums
 
@@ -8,17 +9,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = BASE_DIR / 'schemas'
 OUTPUT_DIR = SCHEMA_DIR / 'outputs'
 EXPRESSION_DIR = SCHEMA_DIR / 'expressions'
+FILTER_DIR = SCHEMA_DIR / 'filters'
 
 
 def generate_schemas():
     print('generating schema')
     print(BASE_DIR, SCHEMA_DIR, EXPRESSION_DIR)
-    expression_schemas = []
-    for expression_file in sorted(os.listdir(EXPRESSION_DIR)):
-        print(expression_file)
-        with open(EXPRESSION_DIR / expression_file) as f:
-            expression_schema = json.loads(f.read())
-            expression_schemas.append(expression_schema)
+    expression_schemas = _load_schemas(EXPRESSION_DIR)
 
     # see https://github.com/jdorn/json-editor/issues/619 for inspiration
     single_expression_schema = {
@@ -54,7 +51,7 @@ def generate_schemas():
         f.write(_schema_to_json(multi_expression_schema))
 
 
-    # indicator
+    # indicators
     with open(SCHEMA_DIR / 'indicators' / 'expression.json') as f:
         indicator_schema = json.loads(f.read())
 
@@ -74,8 +71,19 @@ def generate_schemas():
         f.write(_schema_to_json(multi_indicator_schema))
 
 
-def _schema_to_json(schema):
+def _load_schemas(directory: Path) -> List[dict]:
+    all_schemas = []
+    for schema_file in sorted(os.listdir(EXPRESSION_DIR)):
+        print(schema_file)
+        with open(EXPRESSION_DIR / schema_file) as f:
+            schema = json.loads(f.read())
+            all_schemas.append(schema)
+    return all_schemas
+
+
+def _schema_to_json(schema: dict) -> str:
     return f'{json.dumps(schema, indent=2)}\n'
+
 
 if __name__ == "__main__":
     generate_schemas()
