@@ -34,7 +34,7 @@ def generate_schemas():
       "oneOf": expression_schemas,
     }
     with open(OUTPUT_DIR / 'single-expression.json', 'w') as f:
-        f.write(f'{json.dumps(single_expression_schema, indent=2)}\n')
+        f.write(_schema_to_json(single_expression_schema))
 
     multi_expression_schema = {
         "type": "array",
