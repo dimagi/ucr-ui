@@ -14,7 +14,6 @@ FILTER_DIR = SCHEMA_DIR / 'filters'
 
 def generate_schemas():
     print('generating schema')
-    print(BASE_DIR, SCHEMA_DIR, EXPRESSION_DIR)
     expression_schemas = _load_schemas(EXPRESSION_DIR)
 
     # see https://github.com/jdorn/json-editor/issues/619 for inspiration
@@ -64,7 +63,7 @@ def generate_schemas():
         "definitions": {
             "indicator": indicator_schema,
             "expression": single_expression_schema,
-            "datatype": enums.DATATYPE
+            "datatype": enums.DATATYPE,
         }
     }
     with open(OUTPUT_DIR / 'multi-indicator.json', 'w') as f:
@@ -98,11 +97,40 @@ def generate_schemas():
     with open(OUTPUT_DIR / 'single-filter.json', 'w') as f:
         f.write(_schema_to_json(full_single_filter_schema))
 
+    # data source - this is incomplete but could be easily added
+    data_source = {
+        "type": "object",
+        "properties": {
+            "table_id": {
+                "description": "The name of the underlying DB table to use.",
+                "type": "string"
+            },
+            "configured_filter": {
+                "$ref": "#/definitions/filter"
+            },
+            "configured_indicators": {
+                "type": "array",
+                "title": "Indicators",
+                "items": {
+                    "$ref": "#/definitions/indicator"
+                },
+            },
+        },
+        "definitions": {
+            "datatype": enums.DATATYPE,
+            "expression": single_expression_schema,
+            "indicator": indicator_schema,
+            "filter": single_filter_schema,
+            "operator": enums.OPERATOR,
+        }
+    }
+    with open(OUTPUT_DIR / 'data-source.json', 'w') as f:
+        f.write(_schema_to_json(data_source))
+
 
 def _load_schemas(directory: Path) -> List[dict]:
     all_schemas = []
     for schema_file in sorted(os.listdir(directory)):
-        print(schema_file)
         with open(directory / schema_file) as f:
             schema = json.loads(f.read())
             all_schemas.append(schema)
