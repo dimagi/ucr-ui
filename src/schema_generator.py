@@ -73,9 +73,9 @@ def generate_schemas():
 
 def _load_schemas(directory: Path) -> List[dict]:
     all_schemas = []
-    for schema_file in sorted(os.listdir(EXPRESSION_DIR)):
+    for schema_file in sorted(os.listdir(directory)):
         print(schema_file)
-        with open(EXPRESSION_DIR / schema_file) as f:
+        with open(directory / schema_file) as f:
             schema = json.loads(f.read())
             all_schemas.append(schema)
     return all_schemas
