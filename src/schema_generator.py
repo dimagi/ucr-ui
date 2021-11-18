@@ -70,6 +70,30 @@ def generate_schemas():
     with open(OUTPUT_DIR / 'multi-indicator.json', 'w') as f:
         f.write(_schema_to_json(multi_indicator_schema))
 
+    # filters
+    filter_schemas = _load_schemas(FILTER_DIR)
+    single_filter_schema = {
+        "type": "object",
+        "options": {
+            "keep_oneof_values": False
+        },
+        "properties": {
+            "type": {
+                "type": "string",
+                "options": {
+                    "hidden": True
+                }
+            }
+        },
+        "oneOf": filter_schemas,
+        "definitions": {
+            "expression": single_expression_schema,
+            "operator": enums.OPERATOR,
+        }
+    }
+    with open(OUTPUT_DIR / 'single-filter.json', 'w') as f:
+        f.write(_schema_to_json(single_filter_schema))
+
 
 def _load_schemas(directory: Path) -> List[dict]:
     all_schemas = []

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
+  "title": "Boolean Expression",
+  "description": "A boolean expression filter",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": [
+        "boolean_expression"
+      ]
+    },
+    "expression": {
+      "$ref": "#/definitions/expression"
+    },
+    "operator": {
+      "$ref": "#/definitions/operator"
+    },
+    "property_value": {
+      "description": "The value to compare the expression output to."
+    }
+  },
+  "required": ["type", "expression", "operator", "property_value"]
+}
