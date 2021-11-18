@@ -1,48 +1,51 @@
 {
-  "type": "object",
-  "options": {
-    "keep_oneof_values": false
-  },
-  "properties": {
-    "type": {
-      "type": "string",
-      "options": {
-        "hidden": true
-      }
-    }
-  },
-  "oneOf": [
-    {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
-      "title": "Boolean Expression",
-      "description": "A boolean expression filter",
+  "$ref": "#/definitions/filter",
+  "definitions": {
+    "filter": {
       "type": "object",
+      "options": {
+        "keep_oneof_values": false
+      },
       "properties": {
         "type": {
-          "enum": [
-            "boolean_expression"
-          ]
-        },
-        "expression": {
-          "$ref": "#/definitions/expression"
-        },
-        "operator": {
-          "$ref": "#/definitions/operator"
-        },
-        "property_value": {
-          "description": "The value to compare the expression output to."
+          "type": "string",
+          "options": {
+            "hidden": true
+          }
         }
       },
-      "required": [
-        "type",
-        "expression",
-        "operator",
-        "property_value"
+      "oneOf": [
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://www.commcarehq.org/ucr/filters/boolean_expression.schema.json",
+          "title": "Boolean Expression",
+          "description": "A boolean expression filter",
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "boolean_expression"
+              ]
+            },
+            "expression": {
+              "$ref": "#/definitions/expression"
+            },
+            "operator": {
+              "$ref": "#/definitions/operator"
+            },
+            "property_value": {
+              "description": "The value to compare the expression output to."
+            }
+          },
+          "required": [
+            "type",
+            "expression",
+            "operator",
+            "property_value"
+          ]
+        }
       ]
-    }
-  ],
-  "definitions": {
+    },
     "expression": {
       "type": "object",
       "options": {

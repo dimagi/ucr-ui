@@ -86,13 +86,17 @@ def generate_schemas():
             }
         },
         "oneOf": filter_schemas,
+    }
+    full_single_filter_schema = {
+        "$ref": "#/definitions/filter",
         "definitions": {
+            "filter": single_filter_schema,
             "expression": single_expression_schema,
             "operator": enums.OPERATOR,
         }
     }
     with open(OUTPUT_DIR / 'single-filter.json', 'w') as f:
-        f.write(_schema_to_json(single_filter_schema))
+        f.write(_schema_to_json(full_single_filter_schema))
 
 
 def _load_schemas(directory: Path) -> List[dict]:
