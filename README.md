@@ -31,8 +31,8 @@ The input files with individual UCR elements are in the `./schemas/` folder. The
 - `./schemas/filters/`: one file per filter type.
 - `./schemas/indicators/`: one file per indicator type.
 
-For all three elements only a subset of schemas has been implemented, though it is currently believed that
-all UCR elements can be represented this way.
+Filters are complete. For expressions and indicators, only a subset of schemas has been implemented, though it is 
+believed that all UCR elements can be represented this way.
 
 ## Outputs
 
@@ -40,6 +40,8 @@ The key outputs of this library are in the `./schemas/outputs/` folder. These in
 
 - `single-expression.json`: a JSON schema for a single UCR expression object. 
    This could be plugged in anywhere in CommCare that uses expressions.
+- `single-filter.json`: a JSON schema for a single UCR filter object. 
+   This could be plugged in anywhere in CommCare that uses filters, including the UCR Data Source UI.
 - `multi-indicator.json`: a JSON schema for a list of expression indicator objects.
    This can be used as a replacement for the "Configured indicators" section of the UCR data source UI.
 
@@ -53,7 +55,7 @@ You can paste any schema in to the "Schema" tab, click "Generate Form" on top, a
 ## Project Roadmap
 
 1. Get to high confidence that all important UCR elements can be represented as JSON Schemas and edited by JSON Editor.
-   Indicators and expressions currently have high confidence. Getting filters working is current top priority next.
+   Filters are complete. Indicators and expressions currently have high confidence. So this is close, if not done.
 2. Explore options for integrating the editing UIs into CommCare HQ.
 3. Explore the dynamic creation of the individual schemas from CommCare HQ's Python code, so that they can be kept
    in sync.
