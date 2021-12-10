@@ -21,13 +21,19 @@
   <script>
     // Initialize the editor with a JSON schema
     const initializeEditor = (schema, dataSource) => {
+      const editableFields = Object.keys(schema.properties);
+      const editableDataSource = {}
+      for (const editableField of editableFields) {
+        editableDataSource[editableField] = dataSource[editableField];
+      }
       const editor = new JSONEditor(document.getElementById('editor_holder'), {
         schema: schema,
         compact: true,
         theme: 'bootstrap4',
         collapsed: true,
+        display_required_only: true,
       });
-      editor.setValue(dataSource);
+      editor.setValue(editableDataSource);
       // Hook up the submit button to log to the console
       document.getElementById('submit').addEventListener('click',function() {
         // Get the value from the editor
@@ -40,8 +46,6 @@
         fetch('data-sources/sample-form-data-source.json')
           .then((resp) => resp.json())
           .then((dataSource) => {
-            console.log(schema);
-            console.log(dataSource);
             initializeEditor(schema, dataSource);
           });
 
