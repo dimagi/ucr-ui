@@ -28,10 +28,9 @@
       }
       const editor = new JSONEditor(document.getElementById('editor_holder'), {
         schema: schema,
-        compact: true,
         theme: 'bootstrap4',
-        collapsed: true,
-        display_required_only: true,
+        disable_edit_json: true,  // hide "edit json" buttons
+        disable_properties: true,  // hide "object properties" buttons
       });
       editor.setValue(editableDataSource);
       // Hook up the submit button to log to the console
@@ -48,7 +47,6 @@
           .then((dataSource) => {
             initializeEditor(schema, dataSource);
           });
-
       });
   </script>
 </body>
