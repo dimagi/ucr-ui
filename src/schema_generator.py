@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 from pathlib import Path
 from typing import List
 
@@ -10,6 +11,7 @@ SCHEMA_DIR = BASE_DIR / 'schemas'
 OUTPUT_DIR = SCHEMA_DIR / 'outputs'
 EXPRESSION_DIR = SCHEMA_DIR / 'expressions'
 FILTER_DIR = SCHEMA_DIR / 'filters'
+FRONT_END_SCHEMA_DIR = BASE_DIR / 'frontend' / 'schemas'
 
 
 def generate_schemas():
@@ -106,7 +108,10 @@ def generate_schemas():
                 "type": "string"
             },
             "configured_filter": {
-                "$ref": "#/definitions/filter"
+                "$ref": "#/definitions/filter",
+                "options": {
+                    "collapsed": True
+                }
             },
             "configured_indicators": {
                 "type": "array",
@@ -114,6 +119,11 @@ def generate_schemas():
                 "items": {
                     "$ref": "#/definitions/indicator"
                 },
+                # json editor options
+                "format": "tabs",
+                "options": {
+                    "collapsed": True
+                }
             },
         },
         "definitions": {
@@ -127,6 +137,8 @@ def generate_schemas():
     with open(OUTPUT_DIR / 'data-source.json', 'w') as f:
         f.write(_schema_to_json(data_source))
 
+    _copy_schemas_to_frontend()
+
 
 def _load_schemas(directory: Path) -> List[dict]:
     all_schemas = []
@@ -139,6 +151,11 @@ def _load_schemas(directory: Path) -> List[dict]:
 
 def _schema_to_json(schema: dict) -> str:
     return f'{json.dumps(schema, indent=2)}\n'
+
+
+def _copy_schemas_to_frontend():
+    for schema_file in sorted(os.listdir(OUTPUT_DIR)):
+        shutil.copy(OUTPUT_DIR / schema_file, FRONT_END_SCHEMA_DIR)
 
 
 if __name__ == "__main__":
