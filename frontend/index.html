@@ -10,9 +10,8 @@
     <ol>
       <li>Find your data source on CommCare HQ at "/a/[domain]/configurable_reports/"</li>
       <li>Click "Advanced --> Data Source JSON"</li>
-      <li>Copy the JSON file</li>
-      <li>On this page, click "Edit JSON" below and paste the JSON in</li>
-      <li>Click "Save"</li>
+      <li>Save the JSON file in the "data-sources" folder as "sample-data-source.json"</li>
+      <li>Refresh the page</li>
     </ol>
     <p>Your data source should be imported, and you can edit the filters and indicators using the UI!</p>
     <div id='editor_holder'></div>
@@ -42,7 +41,7 @@
     fetch('schemas/data-source.json')
       .then((resp) => resp.json())
       .then((schema) => {
-        fetch('data-sources/sample-form-data-source.json')
+        fetch('data-sources/sample-data-source.json')
           .then((resp) => resp.json())
           .then((dataSource) => {
             initializeEditor(schema, dataSource);
