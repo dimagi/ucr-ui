@@ -1,0 +1,51 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/nonmin/jsoneditor.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h2>UCR Data Source Editor</h2>
+    <p>How to use this tool:</p>
+    <ol>
+      <li>Find your data source on CommCare HQ at "/a/[domain]/configurable_reports/"</li>
+      <li>Click "Advanced --> Data Source JSON"</li>
+      <li>Copy the JSON file</li>
+      <li>On this page, click "Edit JSON" below and paste the JSON in</li>
+      <li>Click "Save"</li>
+    </ol>
+    <p>Your data source should be imported, and you can edit the filters and indicators using the UI!</p>
+    <div id='editor_holder'></div>
+    <button id='submit'>Submit (console.log)</button>
+  </div>
+  <script>
+    // Initialize the editor with a JSON schema
+    const initializeEditor = (schema, dataSource) => {
+      const editor = new JSONEditor(document.getElementById('editor_holder'), {
+        schema: schema,
+        compact: true,
+        theme: 'bootstrap4',
+        collapsed: true,
+      });
+      editor.setValue(dataSource);
+      // Hook up the submit button to log to the console
+      document.getElementById('submit').addEventListener('click',function() {
+        // Get the value from the editor
+        console.log(editor.getValue());
+      });
+    }
+    fetch('schemas/data-source.json')
+      .then((resp) => resp.json())
+      .then((schema) => {
+        fetch('data-sources/sample-form-data-source.json')
+          .then((resp) => resp.json())
+          .then((dataSource) => {
+            console.log(schema);
+            console.log(dataSource);
+            initializeEditor(schema, dataSource);
+          });
+
+      });
+  </script>
+</body>
+</html>

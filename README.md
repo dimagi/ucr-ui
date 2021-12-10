@@ -45,6 +45,11 @@ The key outputs of this library are in the `./schemas/outputs/` folder. These in
 - `multi-indicator.json`: a JSON schema for a list of expression indicator objects.
    This can be used as a replacement for the "Configured indicators" section of the UCR data source UI.
 
+## Front end
+
+To run the front end, just run `python -m http.server` in the `frontend` directory and then load
+[http://localhost:8000](http://localhost:8000) in a browser.
+
 ## Testing
 
 The easiest way to test these outputs is to use the online [JSON-Editor sandbox](https://pmk65.github.io/jedemov2/dist/demo.html).
