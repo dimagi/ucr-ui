@@ -176,6 +176,7 @@
       "title": "Expression Indicator",
       "description": "Indicator based off an expression",
       "type": "object",
+      "headerTemplate": "{{ self.display_name }}",
       "properties": {
         "type": {
           "type": "string",
