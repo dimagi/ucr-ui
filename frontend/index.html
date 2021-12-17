@@ -1,0 +1,52 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/nonmin/jsoneditor.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h2>UCR Data Source Editor</h2>
+    <p>How to use this tool:</p>
+    <ol>
+      <li>Find your data source on CommCare HQ at "/a/[domain]/configurable_reports/"</li>
+      <li>Click "Advanced --> Data Source JSON"</li>
+      <li>Save the JSON file in the "data-sources" folder as "sample-data-source.json"</li>
+      <li>Refresh the page</li>
+    </ol>
+    <p>Your data source should be imported, and you can edit the filters and indicators using the UI!</p>
+    <div id='editor_holder'></div>
+    <button id='submit'>Submit (console.log)</button>
+  </div>
+  <script>
+    // Initialize the editor with a JSON schema
+    const initializeEditor = (schema, dataSource) => {
+      const editableFields = Object.keys(schema.properties);
+      const editableDataSource = {}
+      for (const editableField of editableFields) {
+        editableDataSource[editableField] = dataSource[editableField];
+      }
+      const editor = new JSONEditor(document.getElementById('editor_holder'), {
+        schema: schema,
+        theme: 'bootstrap4',
+        disable_edit_json: true,  // hide "edit json" buttons
+        disable_properties: true,  // hide "object properties" buttons
+      });
+      editor.setValue(editableDataSource);
+      // Hook up the submit button to log to the console
+      document.getElementById('submit').addEventListener('click',function() {
+        // Get the value from the editor
+        console.log(editor.getValue());
+      });
+    }
+    fetch('schemas/data-source.json')
+      .then((resp) => resp.json())
+      .then((schema) => {
+        fetch('data-sources/sample-data-source.json')
+          .then((resp) => resp.json())
+          .then((dataSource) => {
+            initializeEditor(schema, dataSource);
+          });
+      });
+  </script>
+</body>
+</html>

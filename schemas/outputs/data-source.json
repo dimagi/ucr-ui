@@ -6,13 +6,20 @@
       "type": "string"
     },
     "configured_filter": {
-      "$ref": "#/definitions/filter"
+      "$ref": "#/definitions/filter",
+      "options": {
+        "collapsed": true
+      }
     },
     "configured_indicators": {
       "type": "array",
       "title": "Indicators",
       "items": {
         "$ref": "#/definitions/indicator"
+      },
+      "format": "tabs",
+      "options": {
+        "collapsed": true
       }
     }
   },
@@ -169,6 +176,7 @@
       "title": "Expression Indicator",
       "description": "Indicator based off an expression",
       "type": "object",
+      "headerTemplate": "{{ self.display_name }}",
       "properties": {
         "type": {
           "type": "string",

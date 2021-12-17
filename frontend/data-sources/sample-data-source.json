@@ -1,0 +1,919 @@
+{
+  "_id": "56ebeedbe6de30c63f9c2085d9ce614a",
+  "domain": "dimagi",
+  "description": "",
+  "es_index_settings": {
+    "doc_type": "ElasticSearchIndexSettings",
+    "refresh_interval": "5s",
+    "number_of_shards": 2
+  },
+  "engine_id": "ucr",
+  "configured_indicators": [
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "completed_time",
+      "datatype": "datetime",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "meta",
+          "timeEnd"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "completed_time"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "started_time",
+      "datatype": "datetime",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "meta",
+          "timeStart"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "started_time"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "username",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "meta",
+          "username"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "username"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "userID",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "meta",
+          "userID"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "userID"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@xmlns",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "xmlns"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "@xmlns"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@name",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "@name"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "@name"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "App Version",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "meta",
+          "appVersion"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "App Version"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "deviceID",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "meta",
+          "deviceID"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "deviceID"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "location",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "meta",
+          "location"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "location"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "app_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "app_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "app_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "build_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "build_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "build_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@version",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "@version"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "@version"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "state",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "doc_type"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "state"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "last_sync_token",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "last_sync_token"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "last_sync_token"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "partial_submission",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "partial_submission"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "partial_submission"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "received_on",
+      "datatype": "datetime",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "received_on"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "received_on"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "edited_on",
+      "datatype": "datetime",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "edited_on"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "edited_on"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "submit_ip",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "submit_ip"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "submit_ip"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "event_date",
+      "datatype": "date",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "event_date"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.event_date"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "event_duration_minutes",
+      "datatype": "integer",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "event_duration_minutes"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.event_duration_minutes"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "event_score",
+      "datatype": "integer",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "event_score"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.event_score"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "toggl_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "toggl_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.toggl_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "duration_in_seconds",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "duration_in_seconds"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.duration_in_seconds"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "auto_gps",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "auto_gps"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.auto_gps"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "activity_name",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "activity_name"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.activity_name"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@case_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "case",
+          "@case_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.case.@case_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@date_modified",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "case",
+          "@date_modified"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.case.@date_modified"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@user_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "case",
+          "@user_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.case.@user_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "last_event_date",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "case",
+          "update",
+          "last_event_date"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.case.update.last_event_date"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@case_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "@case_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.@case_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@date_modified",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "@date_modified"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.@date_modified"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@user_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "@user_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.@user_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "event_date",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "update",
+          "event_date"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.update.event_date"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "activity_name",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "update",
+          "activity_name"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.update.activity_name"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "event_score",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "update",
+          "event_score"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.update.event_score"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "location",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "update",
+          "location"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.update.location"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "event_duration",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "update",
+          "event_duration"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.update.event_duration"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "case_name",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "create",
+          "case_name"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.create.case_name"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "owner_id",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "create",
+          "owner_id"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.create.owner_id"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "case_type",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "create",
+          "case_type"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.create.case_type"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "#text",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "index",
+          "parent",
+          "#text"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.index.parent.#text"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "@case_type",
+      "datatype": "string",
+      "expression": {
+        "datatype": null,
+        "type": "property_path",
+        "property_path": [
+          "form",
+          "subcase_0",
+          "case",
+          "index",
+          "parent",
+          "@case_type"
+        ]
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "form.subcase_0.case.index.parent.@case_type"
+    },
+    {
+      "comment": null,
+      "create_index": false,
+      "display_name": "count",
+      "datatype": "small_integer",
+      "expression": {
+        "type": "constant",
+        "constant": 1
+      },
+      "transform": {},
+      "is_primary_key": false,
+      "is_nullable": true,
+      "type": "expression",
+      "column_id": "count"
+    }
+  ],
+  "meta": {
+    "doc_type": "DataSourceMeta",
+    "build": {
+      "doc_type": "DataSourceBuildInformation",
+      "initiated": "2018-06-27T11:24:51.408772Z",
+      "rebuilt_asynchronously": false,
+      "app_id": null,
+      "initiated_in_place": null,
+      "finished": true,
+      "source_id": null,
+      "app_version": null,
+      "finished_in_place": false
+    },
+    "master_id": null
+  },
+  "asynchronous": false,
+  "base_item_expression": {},
+  "is_deactivated": false,
+  "disable_destructive_rebuild": false,
+  "display_name": "New Event Form Master",
+  "sql_settings": {
+    "doc_type": "SQLSettings",
+    "partition_config": [],
+    "citus_config": {
+      "distribution_type": null,
+      "distribution_column": null,
+      "doc_type": "CitusConfig"
+    },
+    "primary_key": []
+  },
+  "configured_filter": {
+    "operator": "eq",
+    "type": "boolean_expression",
+    "expression": {
+      "datatype": null,
+      "type": "property_name",
+      "property_name": "xmlns"
+    },
+    "comment": null,
+    "property_value": "http://openrosa.org/formdesigner/B4FFDB28-8240-4950-B6E2-EA26D7B0856D"
+  },
+  "referenced_doc_type": "XFormInstance",
+  "doc_type": "DataSourceConfiguration",
+  "backend_id": "SQL",
+  "last_modified": "2018-06-27T11:26:02.092814Z",
+  "table_id": "new_event",
+  "named_expressions": {},
+  "named_filters": {},
+  "icds_rebuild_related_docs": false,
+  "sql_column_indexes": [],
+  "validations": [],
+  "mirrored_engine_ids": []
+}
